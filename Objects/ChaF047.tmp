@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqqad62hapldr"]
+
+[ext_resource type="Script" path="res://Scripts/Character.gd" id="1_rc1bx"]
+[ext_resource type="Texture2D" uid="uid://uxc12hyq25oc" path="res://Sprites/White.png" id="1_wqoil"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_20n5o"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2i5ym"]
+size = Vector2(28, 28)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pp1gc"]
+radius = 50.0
+
+[node name="Character" type="CharacterBody2D" groups=["player"]]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_rc1bx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_20n5o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wqoil")
+
+[node name="IsCrushed" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="IsCrushed"]
+shape = SubResource("RectangleShape2D_2i5ym")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_pp1gc")
+target_position = Vector2(0, 0)
+collision_mask = 2
+
+[connection signal="body_entered" from="IsCrushed" to="." method="_on_is_crushed_body_entered"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://kmkcr7li4cgw"]
+
+[ext_resource type="Texture2D" uid="uid://deqi64wpg3q2u" path="res://Sprites/Placeholders/TempTargeting.png" id="1_punpj"]
+[ext_resource type="Texture2D" uid="uid://eu1d37vsyrg0" path="res://Sprites/Particles/SmokeParti.png" id="2_wbcs8"]
+
+[sub_resource type="Curve" id="Curve_3jxr4"]
+_data = [Vector2(0.00461894, 0.778603), 0.0, 0.0, 0, 0, Vector2(0.99998, 0), -1.31803, -1.31803, 0, 0, Vector2(0.99999, 0.71048), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kggd7"]
+curve = SubResource("Curve_3jxr4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1mo1p"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 37.05
+initial_velocity_max = 37.05
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_kggd7")
+color = Color(0.219608, 0.960784, 0.419608, 0.388235)
+
+[node name="HostElement" type="Node2D"]
+editor_description = "All host entities should have this"
+
+[node name="TargetSprite" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_punpj")
+
+[node name="InfectParticle" type="GPUParticles2D" parent="."]
+visible = false
+process_material = SubResource("ParticleProcessMaterial_1mo1p")
+texture = ExtResource("2_wbcs8")
+local_coords = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

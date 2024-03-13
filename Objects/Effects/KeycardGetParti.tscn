@@ -1,0 +1,53 @@
+[gd_scene load_steps=10 format=3 uid="uid://djp48f6v5agv"]
+
+[ext_resource type="Texture2D" uid="uid://bcsfv3xbuotgk" path="res://Sprites/Particles/StarParti.png" id="1_bvusj"]
+[ext_resource type="Script" path="res://Scripts/OneTimeParti.gd" id="2_5llkf"]
+
+[sub_resource type="Curve" id="Curve_pm1no"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2gnst"]
+curve = SubResource("Curve_pm1no")
+
+[sub_resource type="Curve" id="Curve_hy6u1"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 360), 0.0, 0.0, 0, 0, Vector2(1, -360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1ujtb"]
+curve = SubResource("Curve_hy6u1")
+
+[sub_resource type="Curve" id="Curve_cuoe7"]
+_data = [Vector2(0, 0.500437), 0.0, 0.0, 0, 0, Vector2(1, 0), -1.23763, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxi2y"]
+curve = SubResource("Curve_cuoe7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3pw5d"]
+particle_flag_disable_z = true
+angle_min = -5.0
+angle_max = 5.0
+angle_curve = SubResource("CurveTexture_1ujtb")
+direction = Vector3(30, 0, 0)
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_yxi2y")
+alpha_curve = SubResource("CurveTexture_2gnst")
+
+[node name="CastOutParti" type="GPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_3pw5d")
+texture = ExtResource("1_bvusj")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_5llkf")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

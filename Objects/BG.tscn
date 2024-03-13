@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5u0jxlbpwkuj"]
+
+[ext_resource type="Texture2D" uid="uid://dnkprxybj6qc0" path="res://Sprites/BG.png" id="1_ihkkd"]
+[ext_resource type="Texture2D" uid="uid://dfv8a3q302ry5" path="res://Sprites/BGTile.png" id="2_0v6se"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+visible = false
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+z_index = -1
+offset_right = 869.0
+offset_bottom = 656.0
+texture = ExtResource("1_ihkkd")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.3, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
+z_index = -2
+offset_right = 2576.0
+offset_bottom = 1504.0
+texture = ExtResource("2_0v6se")
+stretch_mode = 1

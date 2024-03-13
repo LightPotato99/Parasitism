@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxjhdkkq88hbf"]
+
+[ext_resource type="Script" path="res://Scripts/Global/GlobalSounds.gd" id="1_lyl5e"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_lyl5e")
+
+[node name="AudioPlayerList" type="Node" parent="."]
+
+[node name="1" type="AudioStreamPlayer" parent="AudioPlayerList"]
+
+[node name="2" type="AudioStreamPlayer" parent="AudioPlayerList"]
+
+[node name="3" type="AudioStreamPlayer" parent="AudioPlayerList"]
+
+[node name="4" type="AudioStreamPlayer" parent="AudioPlayerList"]
+
+[node name="5" type="AudioStreamPlayer" parent="AudioPlayerList"]
+
+[node name="6" type="AudioStreamPlayer" parent="AudioPlayerList"]

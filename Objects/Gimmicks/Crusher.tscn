@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=3 uid="uid://bh0wuehttnpaw"]
+
+[ext_resource type="Script" path="res://Scripts/Crusher.gd" id="1_dvuoh"]
+[ext_resource type="Shader" path="res://Shaders/HostShader.gdshader" id="2_5hq6i"]
+[ext_resource type="Texture2D" uid="uid://c46p8iupiwugk" path="res://Sprites/Gimmicks/CrusherIdle.png" id="2_hmcoj"]
+[ext_resource type="Texture2D" uid="uid://cpk3c24vsuo6s" path="res://Sprites/Gimmicks/CrusherRight.png" id="3_hknky"]
+[ext_resource type="PackedScene" uid="uid://kmkcr7li4cgw" path="res://Objects/Gimmicks/HostElement.tscn" id="3_n8ad7"]
+[ext_resource type="Texture2D" uid="uid://dk6pfpkoroy7b" path="res://Sprites/Gimmicks/CrusherUp.png" id="4_1kynx"]
+[ext_resource type="Texture2D" uid="uid://752rl6srls2g" path="res://Sprites/Gimmicks/CrusherLeft.png" id="5_n18uy"]
+[ext_resource type="Texture2D" uid="uid://byrqaoy0yirik" path="res://Sprites/Gimmicks/CrusherDown.png" id="6_v5imu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ihme7"]
+resource_local_to_scene = true
+shader = ExtResource("2_5hq6i")
+shader_parameter/whiteness = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_blf0o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hmcoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hknky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1kynx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_n18uy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_v5imu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sol8o"]
+size = Vector2(28, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffy04"]
+size = Vector2(24, 24)
+
+[node name="Crusher" type="AnimatableBody2D" groups=["host"]]
+collision_layer = 3
+script = ExtResource("1_dvuoh")
+jumpBoost = 0.25
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ihme7")
+sprite_frames = SubResource("SpriteFrames_blf0o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_sol8o")
+
+[node name="ReactivateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HostElement" parent="." instance=ExtResource("3_n8ad7")]
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_ffy04")
+target_position = Vector2(0, 1000)
+collision_mask = 5
+collide_with_areas = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

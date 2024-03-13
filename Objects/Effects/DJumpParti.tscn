@@ -1,0 +1,39 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyk6mhyu0fpbt"]
+
+[ext_resource type="Texture2D" uid="uid://eu1d37vsyrg0" path="res://Sprites/Particles/SmokeParti.png" id="1_n503g"]
+[ext_resource type="Script" path="res://Scripts/OneTimeParti.gd" id="2_s4qgo"]
+
+[sub_resource type="Curve" id="Curve_pm1no"]
+_data = [Vector2(0, 1), 0.0, -1.0, 0, 1, Vector2(1, 0), -1.0, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2gnst"]
+curve = SubResource("Curve_pm1no")
+
+[sub_resource type="Curve" id="Curve_cuoe7"]
+_data = [Vector2(0, 0.307424), 0.0, -0.307424, 0, 1, Vector2(1, 0), -0.307424, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_yxi2y"]
+curve = SubResource("Curve_cuoe7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3pw5d"]
+particle_flag_disable_z = true
+direction = Vector3(0, 3, 0)
+spread = 90.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_yxi2y")
+alpha_curve = SubResource("CurveTexture_2gnst")
+
+[node name="DJumpParti" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_3pw5d")
+texture = ExtResource("1_n503g")
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("2_s4qgo")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://dtwsjwc1e487k"]
+
+[ext_resource type="Script" path="res://Scripts/Cannon.gd" id="1_qtrc3"]
+[ext_resource type="Texture2D" uid="uid://ggkxanmxwd8" path="res://Sprites/Gimmicks/Cannon.png" id="2_vbvuu"]
+[ext_resource type="Texture2D" uid="uid://eu1d37vsyrg0" path="res://Sprites/Particles/SmokeParti.png" id="3_hr1mu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfvsl"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_wrea2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1w1ge"]
+resource_name = "fire"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [0.75, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector2(0, 4), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sp850"]
+_data = {
+"RESET": SubResource("Animation_wrea2"),
+"fire": SubResource("Animation_1w1ge")
+}
+
+[sub_resource type="Curve" id="Curve_1v3nt"]
+_data = [Vector2(0, 0.420961), 0.0, -0.420961, 0, 1, Vector2(1, 0), -0.420961, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e72af"]
+curve = SubResource("Curve_1v3nt")
+
+[sub_resource type="Curve" id="Curve_we8y6"]
+_data = [Vector2(0, 0.466376), 0.0, -1.68424, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_nmmjs"]
+curve = SubResource("Curve_we8y6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uogaj"]
+particle_flag_disable_z = true
+initial_velocity_min = 100.0
+initial_velocity_max = 400.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -120.0
+linear_accel_max = -120.0
+scale_curve = SubResource("CurveTexture_nmmjs")
+alpha_curve = SubResource("CurveTexture_e72af")
+
+[node name="Cannon" type="StaticBody2D" groups=["cannon"]]
+script = ExtResource("1_qtrc3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pfvsl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vbvuu")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sp850")
+}
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_uogaj")
+texture = ExtResource("3_hr1mu")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

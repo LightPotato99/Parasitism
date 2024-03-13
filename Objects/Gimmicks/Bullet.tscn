@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0c3pc0yy3kuu"]
+
+[ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_wg4nv"]
+[ext_resource type="Texture2D" uid="uid://c1w20oi5h7qmw" path="res://Sprites/Gimmicks/Bullet.png" id="2_5s2gu"]
+[ext_resource type="Shader" path="res://Shaders/HostShader.gdshader" id="2_c2c0b"]
+[ext_resource type="PackedScene" uid="uid://kmkcr7li4cgw" path="res://Objects/Gimmicks/HostElement.tscn" id="3_usykx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t15tf"]
+resource_local_to_scene = true
+shader = ExtResource("2_c2c0b")
+shader_parameter/whiteness = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1r84"]
+size = Vector2(24, 15)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gm6w3"]
+size = Vector2(26, 18)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uf6qj"]
+
+[node name="Bullet" type="AnimatableBody2D" groups=["bullet", "host"]]
+collision_layer = 18
+script = ExtResource("1_wg4nv")
+type = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_t15tf")
+texture = ExtResource("2_5s2gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_f1r84")
+
+[node name="KillArea" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="KillArea"]
+polygon = PackedVector2Array(0, 6, -14, 6, -5, 9, 0, 11, 5, 9, 14, 6)
+
+[node name="BounceArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceArea"]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_gm6w3")
+
+[node name="WallColArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallColArea"]
+shape = SubResource("CircleShape2D_uf6qj")
+
+[node name="HostElement" parent="." instance=ExtResource("3_usykx")]
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
+[connection signal="body_entered" from="BounceArea" to="." method="_on_bounce_area_body_entered"]
+[connection signal="body_entered" from="WallColArea" to="." method="_on_wall_col_area_body_entered"]
