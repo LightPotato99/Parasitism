@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ct1lr0iwk2qi4" path="res://Sprites/Character/DjumpIndicator8.png" id="13_7klv7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20n5o"]
-size = Vector2(28, 28)
+size = Vector2(26, 26)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pp1gc"]
 radius = 50.0
@@ -38,7 +38,7 @@ gravity = Vector3(0, 0, 0)
 alpha_curve = SubResource("CurveTexture_1elju")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2i5ym"]
-size = Vector2(24, 24)
+size = Vector2(22, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7sa6"]
 size = Vector2(28, 28)
@@ -340,6 +340,7 @@ animations = [{
 [node name="Character" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4
 collision_mask = 17
+slide_on_ceiling = false
 script = ExtResource("1_rc1bx")
 hostDetectRadius = 90
 
@@ -410,12 +411,16 @@ libraries = {
 }
 
 [node name="DJumpIndicator" type="AnimatedSprite2D" parent="."]
+visible = false
 position = Vector2(0, 22)
 sprite_frames = SubResource("SpriteFrames_jwa31")
 autoplay = "default"
 frame = 1
 frame_progress = 0.173532
 speed_scale = 6.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="body_entered" from="extraCollisions/IsCrushed" to="." method="_on_is_crushed_body_entered"]
 [connection signal="body_entered" from="extraCollisions/Killer" to="." method="_on_killer_body_entered"]

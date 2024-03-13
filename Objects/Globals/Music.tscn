@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://m4nse7x0j2fv"]
+
+[ext_resource type="AudioStream" uid="uid://ccvxd6u7reibo" path="res://Audio/laboratory-112141.mp3" id="1_1wtyw"]
+[ext_resource type="Script" path="res://Scripts/Global/Music.gd" id="2_pom7p"]
+
+[node name="Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_1wtyw")
+volume_db = -5.0
+autoplay = true
+script = ExtResource("2_pom7p")

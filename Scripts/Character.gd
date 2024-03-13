@@ -128,6 +128,7 @@ func kill_player():
 	get_parent().add_child(deathP)
 	GLOBAL_SOUNDS.play_sound(GLOBAL_SOUNDS.death)
 	GLOBAL_GAME.reset_collectibles()
+	GLOBAL_GAME.deaths += 1
 	ScreenTransition.restart_level()
 	queue_free()
 	

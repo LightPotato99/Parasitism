@@ -61,4 +61,5 @@ func delete_host(jumpedOut:bool):
 		deathP.position = global_position
 		get_parent().add_child(deathP)
 		get_node("/root/Node2D/Camera").shake_screen(15,10)
+		GLOBAL_GAME.deaths += 1
 		GLOBAL_SOUNDS.play_sound(GLOBAL_SOUNDS.death)

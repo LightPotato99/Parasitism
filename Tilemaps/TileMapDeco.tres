@@ -1,0 +1,42 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dcejj33drb8mk"]
+
+[ext_resource type="Texture2D" uid="uid://cc2j4p0oi6xfa" path="res://Sprites/Tiles/TileDeco.png" id="1_cvek4"]
+[ext_resource type="Texture2D" uid="uid://wu572i1d6lyh" path="res://Sprites/Tiles/BGDeco.png" id="2_q2ork"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jok1p"]
+texture = ExtResource("1_cvek4")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/left_side = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8yjf2"]
+texture = ExtResource("2_q2ork")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+terrain_set_0/mode = 2
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
+sources/0 = SubResource("TileSetAtlasSource_jok1p")
+sources/1 = SubResource("TileSetAtlasSource_8yjf2")

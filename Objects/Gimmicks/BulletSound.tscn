@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://clsc0onrxlrd"]
+
+[ext_resource type="Script" path="res://Scripts/BulletSound.gd" id="2_vq3tt"]
+[ext_resource type="AudioStream" uid="uid://do7h7iktu7nkc" path="res://Audio/SFX/BulletDestroy.wav" id="5_hlbux"]
+
+[node name="Bullet" type="AudioStreamPlayer2D" groups=["bullet", "host"]]
+stream = ExtResource("5_hlbux")
+autoplay = true
+max_distance = 500.0
+script = ExtResource("2_vq3tt")

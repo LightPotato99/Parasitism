@@ -19,7 +19,7 @@ texture = ExtResource("1_ihkkd")
 motion_scale = Vector2(0.3, 0.3)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxLayer2"]
-z_index = -2
+z_index = -3
 offset_right = 2576.0
 offset_bottom = 1504.0
 texture = ExtResource("2_0v6se")

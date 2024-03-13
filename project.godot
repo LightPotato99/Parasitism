@@ -20,7 +20,8 @@ config/icon="res://icon.svg"
 
 GLOBAL_GAME="*res://Scripts/Global/GlobalGame.gd"
 GLOBAL_SOUNDS="*res://Objects/SoundManager.tscn"
-ScreenTransition="*res://Objects/ScreenTransition.tscn"
+ScreenTransition="*res://Objects/Globals/ScreenTransition.tscn"
+Music="*res://Objects/Globals/Music.tscn"
 
 [input]
 
