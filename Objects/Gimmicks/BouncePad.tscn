@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dodf4r8jltni0"]
 
-[ext_resource type="Script" path="res://Scripts/BouncePad.gd" id="1_3c8wt"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/BouncePad.gd" id="1_3c8wt"]
 [ext_resource type="Texture2D" uid="uid://b4vrdde6gr5mj" path="res://Sprites/Placeholders/TempBouncepad.png" id="1_yta8u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wxsvy"]

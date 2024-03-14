@@ -4,3 +4,4 @@ extends Button
 
 func _on_pressed():
 	ScreenTransition.change_level(warp_to)
+	GLOBAL_GAME.timeFlow = true

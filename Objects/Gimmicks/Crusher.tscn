@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bh0wuehttnpaw"]
 
-[ext_resource type="Script" path="res://Scripts/Crusher.gd" id="1_dvuoh"]
+[ext_resource type="Script" path="res://Scripts/Gimmicks/Crusher.gd" id="1_dvuoh"]
 [ext_resource type="Shader" path="res://Shaders/HostShader.gdshader" id="2_5hq6i"]
 [ext_resource type="Texture2D" uid="uid://c46p8iupiwugk" path="res://Sprites/Gimmicks/CrusherIdle.png" id="2_hmcoj"]
 [ext_resource type="Texture2D" uid="uid://cpk3c24vsuo6s" path="res://Sprites/Gimmicks/CrusherRight.png" id="3_hknky"]

@@ -41,7 +41,7 @@ alpha_curve = SubResource("CurveTexture_1elju")
 size = Vector2(22, 22)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n7sa6"]
-size = Vector2(28, 28)
+size = Vector2(26, 26)
 
 [sub_resource type="Animation" id="Animation_lag1t"]
 length = 0.001

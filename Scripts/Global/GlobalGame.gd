@@ -5,7 +5,7 @@ enum HostType {CRUSHER,BULLET}
 var warpPoint: Vector2 = Vector2.ZERO
 var deaths:int = 0
 var time:float = 0
-var timeFlow:bool = true
+var timeFlow:bool = false
 var timeText:String = "a"
 
 enum ColState {NONE,PENDING,GET}
@@ -22,7 +22,6 @@ func _process(delta):
 		timeText = str(minute) + ":" + "0" + str(sec)
 	else:
 		timeText = str(minute) + ":" + str(sec)
-	print(timeText)
 	
 func reset_collectibles():
 	for i in range(3):
