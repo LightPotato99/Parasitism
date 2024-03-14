@@ -1,14 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0c3pc0yy3kuu"]
+[gd_scene load_steps=12 format=3 uid="uid://d0c3pc0yy3kuu"]
 
 [ext_resource type="Script" path="res://Scripts/Gimmicks/Bullet.gd" id="1_wg4nv"]
 [ext_resource type="Texture2D" uid="uid://c1w20oi5h7qmw" path="res://Sprites/Gimmicks/Bullet.png" id="2_5s2gu"]
 [ext_resource type="Shader" path="res://Shaders/HostShader.gdshader" id="2_c2c0b"]
 [ext_resource type="PackedScene" uid="uid://kmkcr7li4cgw" path="res://Objects/Gimmicks/HostElement.tscn" id="3_usykx"]
+[ext_resource type="Texture2D" uid="uid://nnwe17tgotd4" path="res://Sprites/Gimmicks/BulletDown.png" id="4_t42cj"]
+[ext_resource type="Texture2D" uid="uid://hc5erkl0cimg" path="res://Sprites/Gimmicks/BulletUp.png" id="5_xoj3k"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_t15tf"]
 resource_local_to_scene = true
 shader = ExtResource("2_c2c0b")
 shader_parameter/whiteness = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_62yw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5s2gu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t42cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xoj3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1r84"]
 size = Vector2(24, 15)
@@ -23,9 +42,9 @@ collision_layer = 18
 script = ExtResource("1_wg4nv")
 type = 1
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_t15tf")
-texture = ExtResource("2_5s2gu")
+sprite_frames = SubResource("SpriteFrames_62yw2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -4.5)

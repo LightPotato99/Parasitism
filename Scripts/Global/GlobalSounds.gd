@@ -10,6 +10,8 @@ const land = preload("res://Audio/SFX/Land.wav")
 const crusherLand = preload("res://Audio/SFX/CrusherLand.wav")
 const keycardGet = preload("res://Audio/SFX/KeycardGet.wav")
 const redKeycardPending = preload("res://Audio/SFX/RedKeycardPending.wav")
+const gameStart = preload("res://Audio/SFX/GameStart.wav")
+const buttonSelect = preload("res://Audio/SFX/ButtonSelect.wav")
 
 @onready var audioPlayers: Node = $AudioPlayerList
 

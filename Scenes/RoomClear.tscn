@@ -732,7 +732,7 @@ bottomLimit = 640
 [node name="ParallaxBackground" parent="." instance=ExtResource("6_8sivg")]
 
 [node name="Tooltip" parent="." instance=ExtResource("9_iwht1")]
-position = Vector2(576, 450)
+position = Vector2(496, 450)
 img = ExtResource("10_lgj48")
 txt = "thanks for
 playing!"
@@ -751,3 +751,10 @@ img = ExtResource("11_omubx")
 txt = "death"
 detectRadius = 1000.0
 showDeath = true
+
+[node name="Tooltip4" parent="." instance=ExtResource("9_iwht1")]
+position = Vector2(656, 450)
+img = ExtResource("10_lgj48")
+txt = "Hold Esc
+to quit"
+detectRadius = 1000.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://beqfc680knah5"]
+[gd_scene load_steps=14 format=3 uid="uid://beqfc680knah5"]
 
 [ext_resource type="Texture2D" uid="uid://dkjbekd8lycbg" path="res://Sprites/Title.png" id="1_lfcd6"]
 [ext_resource type="Script" path="res://Scripts/TitleTween.gd" id="2_oq247"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/CreditsButton.gd" id="5_6cl1f"]
 [ext_resource type="TileSet" uid="uid://drp38eff12sd3" path="res://Tilemaps/TileMapBackTiles.tres" id="5_nkby0"]
 [ext_resource type="Script" path="res://Scripts/StartButton.gd" id="6_nint5"]
+[ext_resource type="FontFile" uid="uid://84pp5xgipntl" path="res://NotoSansJP-Medium.ttf" id="10_xiutw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5halm"]
 font = ExtResource("2_vforj")
@@ -18,7 +19,7 @@ font = ExtResource("2_vforj")
 font_size = 24
 
 [sub_resource type="LabelSettings" id="LabelSettings_pexif"]
-font = ExtResource("2_vforj")
+font = ExtResource("10_xiutw")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
@@ -116,27 +117,28 @@ texture = ExtResource("3_u73k6")
 layout_mode = 0
 offset_right = 680.0
 offset_bottom = 512.0
-color = Color(1, 1, 1, 0.666667)
+color = Color(1, 1, 1, 0.784314)
 
-[node name="Label" type="Label" parent="CreditsWindow"]
+[node name="CreditText" type="Label" parent="CreditsWindow"]
 layout_mode = 0
-offset_left = 456.0
-offset_top = 152.0
-offset_right = 696.0
-offset_bottom = 407.0
+offset_left = 438.0
+offset_top = 144.0
+offset_right = 724.0
+offset_bottom = 438.0
 text = "[Music]
--
--
--
+Laboratory by AmarantaMusic
+Cyberpunk City by Peritune
+破滅の林檎 by MusMus
 
 [Sfx]
--
+Sound files by Osabisi
 
-Made for acerola jam 0"
+Made for Acerola Jam 0"
 label_settings = SubResource("LabelSettings_pexif")
 horizontal_alignment = 1
 
 [node name="CloseButton" type="Button" parent="CreditsWindow" node_paths=PackedStringArray("window")]
+layout_mode = 0
 offset_left = 512.0
 offset_top = 455.0
 offset_right = 648.0
@@ -154,6 +156,9 @@ offset_bottom = 66.0
 text = "close"
 label_settings = SubResource("LabelSettings_b5qwx")
 
+[connection signal="mouse_entered" from="Control/StartButton" to="Control/StartButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="Control/StartButton" to="Control/StartButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="Control/CreditsButton" to="Control/CreditsButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="Control/CreditsButton" to="Control/CreditsButton" method="_on_pressed"]
+[connection signal="mouse_entered" from="CreditsWindow/CloseButton" to="CreditsWindow/CloseButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="CreditsWindow/CloseButton" to="CreditsWindow/CloseButton" method="_on_pressed"]

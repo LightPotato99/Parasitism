@@ -3,7 +3,6 @@ extends HostEntity
 var velocity:Vector2
 var direction:Vector2
 var speed:float
-var justFired:float = 1
 
 var dirArray = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 var bulSound = preload("res://Objects/Gimmicks/BulletSound.tscn")
@@ -20,12 +19,14 @@ func _physics_process(delta):
 			velocity.y = verticalDir * speed
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed*2)
+		if velocity.y > 0:
+			$Sprite2D.frame = 1
+		elif velocity.y < 0:
+			$Sprite2D.frame = 2
+		else:
+			$Sprite2D.frame = 0
 		
 	position += velocity * delta
-	
-	justFired -= 0.2
-	if justFired < 0:
-		pass
 
 func _on_bounce_area_body_entered(body):
 	body.player_jump(-500,false)
